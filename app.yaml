@@ -2,6 +2,41 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
-handlers:
-- url: /.*
-  script: hello_world.hello_world_app
+libraries:
+- name: webapp2
+  version: 2.5.2
+- name: jinja2
+  version: 2.6
+
+handlers: 
+- url: /static
+  static_dir: sp_frontend/dist/static
+  
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+
+- url: /
+  script: hello_world.hello_world_app    
+   
+skip_files:
+
+- ^(.*/)?.*/assets/.*$
+- ^(.*/)?.*/build/.*$
+- ^(.*/)?.*/test/.*$
+- ^(.*/)?.*/templates/.*$
+- ^(.*/)?.*/node_modules/.*$
+
+- ^(assets/.*)
+- ^(build/.*)
+- ^(test/.*)
+- ^(templates/.*)
+- ^(node_modules/.*)
+
+- ^(.*/)?#.*#$
+- ^(.*/)?.*~$
+- ^(.*/)?.*\.DS_Store$
+- ^(.*/)?.*\.py[co]$
+- ^(.*/)?.*/RCS/.*$
+- ^(.*/)?\..*$
