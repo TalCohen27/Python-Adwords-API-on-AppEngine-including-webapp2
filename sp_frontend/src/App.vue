@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <router-view/>
+	<router-link :to="{ name: 'HelloWorld' }">Home</router-link>
+    <router-link to="/Campaigns">Campaigns</router-link>
+	<router-view></router-view>
   </div>
 </template>
 
